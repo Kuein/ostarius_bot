@@ -16,7 +16,7 @@ var telegramApi string = "https://api.telegram.org/bot" + os.Getenv("TELEGRAM_BO
 
 func handler(request events.LambdaFunctionURLRequest) {
 	payload := []byte(request.Body)
-	_, err := jsonparser.GetString(payload, "message", "new_chat_participant")
+	_, err := jsonparser.GetInt(payload, "message", "new_chat_participant", "id")
 	if err != nil {
 		return
 	}
